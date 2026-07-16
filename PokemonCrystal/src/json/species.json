@@ -1,0 +1,50 @@
+{
+	"bulbasaur": {
+		"pokedexId": 1,
+		"name": "Bulbasaur",
+		"types":["GRASS", "POISON"],
+		"baseStats":{
+			"HP": 45,
+			"ATK": 49,
+			"DEF": 49,
+			"SPATK": 65,
+			"SPDEF": 65,
+			"SPEED": 45
+		},
+		"effortValues": {
+			"SPATK": 1
+		}
+	},
+	"charmander": {
+		"pokedexId": 4,
+		"name": "Charmander",
+		"types": ["FIRE"],
+		"baseStats": {
+			"HP": 39,
+			"ATK": 52,
+			"DEF": 43,
+			"SPATK": 60,
+			"SPDEF": 50,
+			"SPEED": 65
+		},
+		"effortValues": {
+			"SPEED": 1
+		}
+	},
+	"squirtle": {
+		"pokedexId": 7,
+		"name": "Squirtle",
+		"types": ["WATER"],
+		"baseStats": {
+			"HP": 44,
+			"ATK": 48,
+			"DEF": 65,
+			"SPATK": 50,
+			"SPDEF": 64,
+			"SPEED": 43
+		},
+		"effortValues": {
+			"DEF": 1
+		}
+	}
+}
