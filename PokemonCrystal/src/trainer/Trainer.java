@@ -1,5 +1,8 @@
 package trainer;
 
-public record Trainer(String nichname, Team team) {
+public record Trainer(String nickname, Team team) {
 
+	private void test() {
+		
+	}
 }
