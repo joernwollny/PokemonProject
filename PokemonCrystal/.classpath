@@ -7,8 +7,14 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/6"/>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Users/Student/git/repository/PokemonCrystal/jackson-annotations-2.22.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Student/git/repository/PokemonCrystal/jackson-core-3.2.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Student/git/repository/PokemonCrystal/jackson-databind-3.2.0.jar"/>
+=======
+	<classpathentry kind="lib" path="C:/Users/joern/git/PokemonProject/PokemonCrystal/jackson-annotations-2.22.jar"/>
+	<classpathentry kind="lib" path="C:/Users/joern/git/PokemonProject/PokemonCrystal/jackson-core-3.2.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/joern/git/PokemonProject/PokemonCrystal/jackson-databind-3.2.0.jar"/>
+>>>>>>> branch 'master' of https://github.com/joernwollny/PokemonProject.git
 	<classpathentry kind="output" path="bin"/>
 </classpath>
