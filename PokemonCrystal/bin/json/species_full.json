@@ -1,0 +1,30 @@
+{
+	"bulbasaur": {
+		"pokedexId": 1,
+		"name": "Bulbasaur",
+		"types":["GRASS", "POISON"],
+		"baseStats":{
+			"HP":45,
+			"ATK":49,
+			"DEF":49,
+			"SPATK":65,
+			"SPDEF":65,
+			"SPEED":45
+		},
+		"effortValues":{
+			"SPATK": 1
+		},
+		"genderRatio": {
+			"MALE":0.875,
+			"FEMALE":0.125
+		},
+		"abilities": {
+			"primary":["Overgrow"],
+			"hidden": "Chlorophyll"
+		},
+		"evolutions": ["ivysaur"],
+		"captureRate": 45,
+		"experienceGroup":"MEDIUM_SLOW",
+		"eggGroups":["Monster", "Grass"]
+	}
+}

@@ -9,10 +9,7 @@ public class Fight implements IBattleAction{
 
 	@Override
 	public void apply(Trainer user, Trainer target) {
-		int i = 1;
-		for (Move move : user.team().getActivePokemon().getMoves()) {
-			System.out.println(i++ + ": " + move.toString());
-		}
+		BattleUI.showMoves(user);
 		
 	}
 

@@ -19,16 +19,13 @@ public class BattleTurn {
 	
 	public void execute() {
 		if (player.team().getActivePokemon().isEmpty()) {
-			//player switch in
+			player.team().setDefaultActivePokemon();
 		}
 		if (npc.team().getActivePokemon().isEmpty()) {
-			//npc switch in
+			npc.team().setDefaultActivePokemon();
 		}
 		
-		int i = 0;
-		for (BattleAction action : BattleAction.values()) {
-			System.out.println(i++ + ": " + action.toString());
-		}
+		BattleUI.showBattleMenue();
 		
 		IBattleAction playerAction = BattleAction.getAction();
 		IBattleAction npcAction = BattleAction.FIGHT.create();
