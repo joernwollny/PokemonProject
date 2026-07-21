@@ -1,5 +1,7 @@
-package status;
+//package status;
+//
+//public class NoEffect implements IStatusEffect {
+//
+//}
 
-public class NoEffect implements IStatusEffect {
-
-}
+//replaced with optional

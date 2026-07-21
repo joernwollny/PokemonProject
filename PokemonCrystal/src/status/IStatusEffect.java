@@ -27,4 +27,5 @@ public interface IStatusEffect {
 	default void onSwitch(ActivePokemon pokemon) {}
 
 	default void onWalking(Pokemon pokemon) {}
+	
 }

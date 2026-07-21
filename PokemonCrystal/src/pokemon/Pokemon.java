@@ -1,16 +1,15 @@
 package pokemon;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
-import move.Move;
 import move.MoveSet;
 import stats.BaseStats;
 import stats.EffectiveStats;
 import stats.EffortValues;
 import stats.IndividualValues;
 import stats.Stat;
+import status.BadPoison;
+import status.IStatusEffect;
 import status.StatusCondition;
 import status.StatusResult;
 
@@ -36,7 +35,7 @@ public class Pokemon {
 	protected final MoveSet moves;
 
 	protected int totalDamageTaken = 0;
-	protected StatusCondition status = StatusCondition.NO_EFFECT;
+	protected Optional<IStatusEffect> status;
 //	protected boolean pokerus = false;
 
 
@@ -94,11 +93,11 @@ public class Pokemon {
 	}
 
 
-	public StatusCondition getStatus() {
+	public Optional<IStatusEffect> getStatus() {
 		return status;
 	}
 	
-	public Move[] getMoves() {
+	public MoveSet getMoves() {
 		return moves;
 	}
 
@@ -126,12 +125,17 @@ public class Pokemon {
 		this.nickname = nickname;
 	}
 
-
+	//exception if badpoisoned -> poisoned
 	public StatusResult setStatus(StatusCondition status) {
-		if (this.status != StatusCondition.NO_EFFECT) {
+		if (status.equals(StatusCondition.POISON) && this.status.orElse(StatusCondition.NO_EFFECT.create()).getClass() == BadPoison.class) {
+			this.status = Optional.of(status.create());
+			return StatusResult.CHANGED;
+		}
+		
+		if (this.status.isPresent()) {
 			return StatusResult.NO_CHANGE;
 		}
-		this.status = status;
+		this.status = Optional.of(status.create());
 		return StatusResult.CHANGED;
 	}
 

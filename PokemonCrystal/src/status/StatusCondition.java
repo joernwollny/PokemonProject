@@ -3,23 +3,22 @@ package status;
 import java.util.function.Supplier;
 
 public enum StatusCondition {
-	NO_EFFECT(NoEffect::new, true),
-	BURN(Burn::new, true),
-	FREEZE(Freeze::new, true),
-	PARALYSIS(Paralysis::new, true),
-	POISON(Poison::new, true),
-	BAD_POISON(BadPoison::new, true),
-	SLEEP(Sleep::new, true),
-	FLINCH(Flinch::new, false),
-	CONFUSION(Confusion::new, false);
+	NO_EFFECT(null, StatusType.PERSISTENT),
+	BURN(Burn::new, StatusType.PERSISTENT),
+	FREEZE(Freeze::new, StatusType.PERSISTENT),
+	PARALYSIS(Paralysis::new, StatusType.PERSISTENT),
+	POISON(Poison::new, StatusType.PERSISTENT),
+	BAD_POISON(BadPoison::new, StatusType.PERSISTENT),
+	SLEEP(Sleep::new, StatusType.PERSISTENT),
+	FLINCH(Flinch::new, StatusType.VOLATILE),
+	CONFUSION(Confusion::new, StatusType.VOLATILE);
 
 	private final Supplier<IStatusEffect> factory;
-	private final boolean persistent;
-	//maybe enum statusCategory
+	private final StatusType type;
 
-	StatusCondition(Supplier<IStatusEffect> factory, boolean persistent) {
+	StatusCondition(Supplier<IStatusEffect> factory, StatusType type) {
 		this.factory = factory;
-		this.persistent = persistent;
+		this.type = type;
 	}
 
 	public IStatusEffect create() {
@@ -27,6 +26,10 @@ public enum StatusCondition {
 	}
 	
 	public boolean isPersistent() {
-		return persistent;
+		return type.equals(StatusType.PERSISTENT);
+	}
+	
+	public boolean isVolatile() {
+		return type.equals(StatusType.VOLATILE);
 	}
 }

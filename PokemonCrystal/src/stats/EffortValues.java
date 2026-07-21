@@ -36,9 +36,9 @@ public class EffortValues extends Stats{
 		stats.put(stat, Math.min(stats.get(stat), MAX_EV_IN_STAT));
 	}
 
-	public void addAll(EnumMap<Stat, Integer> ivToAdd) {
+	public void add(EnumMap<Stat, Integer> ev) {
 		for (Stat stat : Stat.values()) {
-			add(stat, ivToAdd.get(stat));
+			add(stat, ev.get(stat));
 		}
 	}
 }

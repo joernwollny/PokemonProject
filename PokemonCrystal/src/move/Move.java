@@ -7,7 +7,7 @@ import battle.ActionContext;
 import battle.Battle;
 import pokemon.Type;
 
-public record Move(String name, Type type, Category category, PowerPoints pp, int priority, EnumSet<Flag> flags, Attempt attempt) implements Executable{
+public record Move(String name, Type type, Category category, PowerPoints pp, int priority, EnumSet<Flag> flags, Attempt attempt) {
 //	private final String name;
 //	private final Type type;
 //	private final Category category;
@@ -42,12 +42,6 @@ public record Move(String name, Type type, Category category, PowerPoints pp, in
 
 	public boolean isPhysical() {
 		return category == Category.PHYSICAL;
-	}
-
-	@Override
-	public void execute(Battle battle) {
-		// TODO Auto-generated method stub
-		
 	}
 
 //	public String getName() {

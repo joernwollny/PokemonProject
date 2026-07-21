@@ -7,6 +7,6 @@ import number.INumber;
 public record LessThanOrEquals(ICondition<INumber> a) implements ICondition<Battle> {
 	@Override
 	public boolean check(Battle battle) {
-		return a.check(null));
+		return a.check(null);
 	}
 }
