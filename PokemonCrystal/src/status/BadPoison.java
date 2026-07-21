@@ -1,8 +1,6 @@
 package status;
 
-import battle.ActionContext;
 import pokemon.ActivePokemon;
-import pokemon.Pokemon;
 import stats.Stat;
 
 public class BadPoison implements IStatusEffect{
@@ -17,7 +15,7 @@ public class BadPoison implements IStatusEffect{
 
 	@Override
 	public void onSwitch(ActivePokemon pokemon) {
-		pokemon.setStatus(StatusCondition.POISON.create());
+		pokemon.setStatus(StatusCondition.POISON);
 	}
 	
 	public boolean equals(Object obj) {

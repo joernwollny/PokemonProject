@@ -1,12 +1,14 @@
-<<<<<<< HEAD
-/stats/
-/move/
-/status/
-/pokemon/
-=======
->>>>>>> branch 'master' of https://github.com/joernwollny/PokemonProject.git
+/attempt/
 /battle/
-/trainer/
-/stages/
-/condition/
 /battleaction/
+/condition/
+/effect/
+/game/
+/json/
+/move/
+/number/
+/pokemon/
+/stages/
+/stats/
+/status/
+/trainer/

@@ -1,6 +1,7 @@
 package status;
 
 import battle.ActionContext;
+import effect.ConfusionDamage;
 import pokemon.ActivePokemon;
 import pokemon.Pokemon;
 
@@ -21,7 +22,7 @@ public class Confusion implements IStatusEffect {
 
 		if (!canMove) {
 			//40 basepower typeless physical can't crit
-			action.user().getPokemon().incomingDamage(new ConfusionDamage());
+			new ConfusionDamage().apply(action.user());
 		}
 
 		return canMove;
