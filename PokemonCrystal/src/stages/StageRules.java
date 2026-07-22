@@ -1,9 +1,7 @@
 package stages;
 
 public abstract class StageRules {
-	public static int clamp(int value, int min, int max) {
-		return Math.max(min, Math.min(value, max));
-	}
+	
 	private final double[] values;
 	private final int minStage;
 	private final int maxStage;
@@ -33,8 +31,12 @@ public abstract class StageRules {
 	}
 
 	public double getMultiplier(int stage) {
-		int clamped = clamp(stage, minStage, maxStage);
+		int clamped = clamp(stage);
 		return values[clamped + offset];
 	}
 
+	public int clamp(int value) {
+		return Math.max(minStage, Math.min(value, maxStage));
+	}
+	
 }

@@ -28,7 +28,7 @@ public enum Stat {
 		this.string = string;
 	}
 
-	public StageRules getStages() {
+	public StageRules getRules() {
 		return stages;
 	}
 

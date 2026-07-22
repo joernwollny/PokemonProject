@@ -35,7 +35,7 @@ public class ActivePokemon {
 	}
 
 	private double getEffectiveMultiplier(Stat stat) {
-		return stat.getStages().getMultiplier(stages.get(stat));
+		return stat.getRules().getMultiplier(stages.get(stat));
 	}
 
 	public double getEffectiveStat(Stat stat) {

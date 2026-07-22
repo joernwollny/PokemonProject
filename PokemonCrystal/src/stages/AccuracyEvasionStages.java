@@ -27,8 +27,4 @@ public class AccuracyEvasionStages extends StageRules {
 		super(STAGES, MIN_STAGE, MAX_STAGE, OFFSET);
 	}
 
-	//public static int getMax() {
-	//	return MAX_STAGE;
-	//}
-
 }
