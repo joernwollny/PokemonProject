@@ -1,4 +1,4 @@
-//package battle;
+package battle;
 //
 //import org.junit.jupiter.params.shadow.de.siegmar.fastcsv.reader.CsvReader;
 //

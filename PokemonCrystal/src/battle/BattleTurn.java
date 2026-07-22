@@ -25,7 +25,7 @@ public class BattleTurn {
 			npc.team().setDefaultActivePokemon();
 		}
 		
-		BattleUI.showBattleMenue();
+//		BattleUI.showBattleMenue();
 		
 		IBattleAction playerAction = BattleAction.getAction();
 		IBattleAction npcAction = BattleAction.FIGHT.create();
