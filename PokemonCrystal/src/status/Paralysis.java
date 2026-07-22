@@ -2,7 +2,7 @@ package status;
 
 import battle.ActionContext;
 
-public class Paralysis implements IStatusEffect {
+public class Paralysis extends AbstractStatusEffect {
 
 	@Override
 	public boolean onMove(ActionContext action) {

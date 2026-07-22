@@ -1,8 +1,6 @@
 package pokemon;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import stages.BattleStages;
@@ -19,21 +17,11 @@ public class ActivePokemon {
 	public ActivePokemon(Pokemon pokemon) {
 		this.pokemon = pokemon;
 	}
-	
-//	public ActivePokemon(Optional<Pokemon> optionalPokemon) {
-//		if (optionalPokemon.isPresent()) {
-//			this.pokemon = optionalPokemon.get();
-//		}
-//	}
 
 	public int getStage(Stat stat) {
 		return stages.get(stat);
 	}
 	
-	public BattleStages getStages() {
-		return stages;
-	}
-
 	private double getEffectiveMultiplier(Stat stat) {
 		return stat.getRules().getMultiplier(stages.get(stat));
 	}
@@ -57,13 +45,10 @@ public class ActivePokemon {
 		return speed + Math.random();
 	}
 	
-	public List<IStatusEffect> getStatus() {
-		List<IStatusEffect> statusEffects = new ArrayList<>(volatiles);
-		
-		if (pokemon.getStatus().isPresent()) {
-			statusEffects.add(pokemon.getStatus().get());
-		}
-		return statusEffects;
+	public Set<IStatusEffect> getStatus() {
+		Set<IStatusEffect> allStatus = new HashSet<>(volatiles);
+		pokemon.getPersistentStatus().ifPresent(s -> allStatus.add(s));
+		return allStatus;
 	}
 	
 	public StatusResult setStatus(StatusCondition status) {

@@ -28,4 +28,6 @@ public interface IStatusEffect {
 
 	default void onWalking(Pokemon pokemon) {}
 	
+	
+	
 }

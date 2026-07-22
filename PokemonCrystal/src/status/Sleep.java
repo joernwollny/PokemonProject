@@ -3,7 +3,7 @@ package status;
 import battle.ActionContext;
 import pokemon.ActivePokemon;
 
-public class Sleep implements IStatusEffect {
+public class Sleep extends AbstractStatusEffect {
 
 	private static final int MIN_ROUNDS_SLEEP = 1, MAX_ROUNDS_SLEEP = 4;
 	private static final int DELTA = MAX_ROUNDS_SLEEP - MIN_ROUNDS_SLEEP + 1;

@@ -4,7 +4,7 @@ import battle.ActionContext;
 import effect.StatusDamage;
 import pokemon.ActivePokemon;
 
-public class Burn implements IStatusEffect {
+public class Burn extends AbstractStatusEffect {
 
 	@Override
 	public double damageModifier(ActionContext action) {

@@ -2,7 +2,7 @@ package status;
 
 import battle.ActionContext;
 
-public class Freeze implements IStatusEffect {
+public class Freeze extends AbstractStatusEffect {
 
 	@Override
 	public boolean onMove(ActionContext action) {

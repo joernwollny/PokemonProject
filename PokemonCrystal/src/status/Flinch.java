@@ -3,7 +3,7 @@ package status;
 import battle.ActionContext;
 import pokemon.ActivePokemon;
 
-public class Flinch implements IStatusEffect {
+public class Flinch extends AbstractStatusEffect {
 
 	@Override
 	public boolean onMove(ActionContext action) {
@@ -12,6 +12,6 @@ public class Flinch implements IStatusEffect {
 
 	@Override
 	public void onTurnEnd(ActivePokemon pokemon) {
-		pokemon.removeStatus(StatusCondition.FLINCH);
+		pokemon.removeStatus(this);
 	}
 }

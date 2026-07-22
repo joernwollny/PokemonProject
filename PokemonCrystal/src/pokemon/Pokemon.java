@@ -35,7 +35,7 @@ public class Pokemon {
 	protected final MoveSet moves;
 
 	protected int totalDamageTaken = 0;
-	protected Optional<IStatusEffect> status;
+	protected IStatusEffect status;
 //	protected boolean pokerus = false;
 
 
@@ -93,8 +93,8 @@ public class Pokemon {
 	}
 
 
-	public Optional<IStatusEffect> getStatus() {
-		return status;
+	public Optional<IStatusEffect> getPersistentStatus() {
+		return Optional.ofNullable(status);
 	}
 	
 	public MoveSet getMoves() {
@@ -115,7 +115,10 @@ public class Pokemon {
 	}
 
 
-	public void levelUp(int delta) {
+	public void levelUp(int delta) throws IllegalArgumentException{
+		if (delta <= 0) {
+			throw new IllegalArgumentException("level up amount can't be 0 or negative");
+		}
 		level += delta;
 		updateStats();
 	}
@@ -125,18 +128,24 @@ public class Pokemon {
 		this.nickname = nickname;
 	}
 
-	//exception if badpoisoned -> poisoned
 	public StatusResult setStatus(StatusCondition status) {
-		if (status.equals(StatusCondition.POISON) && this.status.orElse(StatusCondition.NO_EFFECT.create()).getClass() == BadPoison.class) {
-			this.status = Optional.of(status.create());
-			return StatusResult.CHANGED;
-		}
-		
-		if (this.status.isPresent()) {
+		if (getPersistentStatus().isPresent()) {
 			return StatusResult.NO_CHANGE;
 		}
-		this.status = Optional.of(status.create());
+		this.status = status.create();
 		return StatusResult.CHANGED;
+	}
+	
+	public StatusResult onSwitch() {
+		Optional<IStatusEffect> current = getPersistentStatus();
+		if (current.isEmpty()) {
+			return StatusResult.NO_CHANGE;
+		}
+		if (current.get().getClass().equals(BadPoison.class)) {
+			status = StatusCondition.POISON.create();
+			return StatusResult.CHANGED;
+		}
+		return StatusResult.NO_CHANGE;
 	}
 
 	private void updateStats() {

@@ -3,7 +3,7 @@ package status;
 import pokemon.ActivePokemon;
 import stats.Stat;
 
-public class BadPoison implements IStatusEffect{
+public class BadPoison extends AbstractStatusEffect {
 	
 	private int roundsBadPoison = 0;
 
@@ -15,19 +15,7 @@ public class BadPoison implements IStatusEffect{
 
 	@Override
 	public void onSwitch(ActivePokemon pokemon) {
-		pokemon.setStatus(StatusCondition.POISON);
+		pokemon.getPokemon().onSwitch();
 	}
 	
-	public boolean equals(Object obj) {
-		if (obj == null) {
-			return false;
-		}
-		
-		if (obj.getClass() != this.getClass()) {
-			return false;
-		}
-		
-		//specifically NOT checking for roundsToConfuse, because of Set volatiles in ActivePokemon
-		return true;
-	}
 }

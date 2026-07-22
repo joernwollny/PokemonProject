@@ -3,9 +3,8 @@ package status;
 import battle.ActionContext;
 import effect.ConfusionDamage;
 import pokemon.ActivePokemon;
-import pokemon.Pokemon;
 
-public class Confusion implements IStatusEffect {
+public class Confusion extends AbstractStatusEffect {
 
 	private static final int MIN_ROUNDS_CONFUSED = 1, MAX_ROUNDS_CONFUSED = 4;
 	private static final int DELTA = MAX_ROUNDS_CONFUSED - MIN_ROUNDS_CONFUSED + 1;
@@ -31,19 +30,6 @@ public class Confusion implements IStatusEffect {
 	@Override
 	public void onTurnEnd(ActivePokemon pokemon) {
 		roundsToConfuse--;
-	}
-	
-	public boolean equals(Object obj) {
-		if (obj == null) {
-			return false;
-		}
-		
-		if (obj.getClass() != this.getClass()) {
-			return false;
-		}
-		
-		//specifically NOT checking for roundsToConfuse, because of Set volatiles in ActivePokemon
-		return true;
 	}
 
 }
