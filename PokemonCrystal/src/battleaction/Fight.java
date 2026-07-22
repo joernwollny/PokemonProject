@@ -1,15 +1,21 @@
 package battleaction;
 
-import battle.ActionContext;
-import battle.BattleTurn;
-import move.Move;
 import trainer.Trainer;
 
+//possibly npc fight 
 public class Fight implements IBattleAction{
 
 	@Override
-	public void apply(Trainer user, Trainer target) {
-		BattleUI.showMoves(user);
+	public void prepare(Trainer user, Trainer target) {
+		//show moves
+		//select move
+		//possibly select target
+		
+	}
+
+	@Override
+	public void execute(Trainer user, Trainer target) {
+		// TODO Auto-generated method stub
 		
 	}
 
