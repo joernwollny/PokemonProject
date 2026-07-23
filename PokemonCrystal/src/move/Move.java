@@ -29,5 +29,9 @@ public record Move(String name, Type type, Category category, PowerPoints pp, in
 	public Target getDefaultTarget() {
 		return Target.ENEMY;
 	}
+	
+	public boolean flagPresent(Flag flag) {
+		return flags.contains(flag);
+	}
 
 }

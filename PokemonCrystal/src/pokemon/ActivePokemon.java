@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import stages.BattleStages;
+import stages.StageResult;
+import stages.StatChange;
 import stats.Stat;
 import status.IStatusEffect;
 import status.StatusCondition;
@@ -18,8 +20,12 @@ public class ActivePokemon {
 		this.pokemon = pokemon;
 	}
 
-	public int getStage(Stat stat) {
-		return stages.get(stat);
+//	public int getStage(Stat stat) {
+//		return stages.get(stat);
+//	}
+	
+	public StageResult addStage(StatChange change) {
+		return stages.add(change.stat(), change.delta());
 	}
 	
 	private double getEffectiveMultiplier(Stat stat) {
@@ -28,6 +34,7 @@ public class ActivePokemon {
 
 	public double getEffectiveStat(Stat stat) {
 		double multiplier = getEffectiveMultiplier(stat);
+		//PROBLEM!!! CRIT, EVASION, ACCURACY HAVE NO STAT;
 		return pokemon.getEffectiveStat(stat) * multiplier;
 	}
 

@@ -7,7 +7,7 @@ public record StatChangeEffect(StatChange change) implements IEffect<ActivePokem
 
 	@Override
 	public void apply(ActivePokemon pokemon) {
-		pokemon.getStages().add(change.stat(), change.delta());
+		pokemon.addStage(change);
 		//what happens with the StageResult?
 	}
 }
