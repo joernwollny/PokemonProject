@@ -23,30 +23,15 @@ public class MoveSet {
 		this.moves.addAll(moves);
 	}
 	
-	public void add(Move move) {
-		if (moves.size() < MAX_MOVES) {
-			moves.add(move);
-		}
-		
-		if (moves.size() == MAX_MOVES) {
-			moves.set(moveSelection(), move);
-		}
-	}
-	
-	public void printMoves() {
-		int i = 1;
-		for (Move move : moves) {
-			System.out.println(i++ + ": " + move.toString());
-		}
-	}
-	
-	public int moveSelection() {
-		printMoves();
-		return UserSelection.userInput(1, MAX_MOVES) - ARRAY_OFFSET;
-	}
-	
 	public Move get(int index) {
 		return moves.get(index);
 	}
 	
+	public int size() {
+		return moves.size();
+	}
+	
+	public boolean anyUsable() {
+		return moves.stream().anyMatch(m -> m.isUseable());
+	}
 }

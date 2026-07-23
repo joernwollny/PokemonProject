@@ -4,5 +4,5 @@ import trainer.Trainer;
 
 public interface IBattleAction {
 	void prepare(Trainer user, Trainer target);
-	void execute(Trainer user, Trainer target);
+	void execute();
 }

@@ -40,7 +40,7 @@ public class Game {
 		
 		MoveSet testset = test.generateMoveSet(5);
 		
-		testset.printMoves();
+//		testset.printMoves();
 		
 		
 		
