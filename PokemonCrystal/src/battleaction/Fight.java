@@ -15,7 +15,7 @@ import trainer.Trainer;
 public class Fight implements IBattleAction {
 
 	private Move move;
-	private List<ActivePokemon> target;
+	private List<ActivePokemon> targets;
 	private ActivePokemon user;
 
 	@Override
@@ -28,7 +28,7 @@ public class Fight implements IBattleAction {
 
 		if (!moves.anyUsable()) {
 //			move = struggle;
-			target = List.of(enemy.team().getActivePokemon().get());
+			targets = List.of(enemy.team().getActivePokemon().get());
 			return;
 		}
 		
@@ -50,7 +50,7 @@ public class Fight implements IBattleAction {
 		} while (!possibleMove.isUseable());
 
 		move = possibleMove;
-		target = possibleTargets;
+		targets = possibleTargets;
 
 	}
 

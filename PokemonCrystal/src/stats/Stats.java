@@ -44,9 +44,10 @@ abstract class Stats {
 		return stats.getOrDefault(stat, 0);
 	}
 	
+	@Deprecated
 	public String getPrimary() {
 		return stats.entrySet().stream()
-				.filter(k -> k.getKey().isPrimary())
+				.filter(k -> k.getKey().isBase())
 				.map(Map.Entry::getValue)
 				.collect(Collectors.toList())
 				.toString();

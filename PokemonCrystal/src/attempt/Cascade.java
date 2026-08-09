@@ -2,12 +2,12 @@ package attempt;
 
 import battle.ActionContext;
 
-public record Cascade(Instance[] instances) implements Attempt{
+public record Cascade(MoveInstance[] instances) implements Attempt{
 	@Override
 	public boolean execute(ActionContext battle) {
 		boolean hit;
 		
-		for (Instance instance : instances) {
+		for (MoveInstance instance : instances) {
 			hit = instance.execute(battle);
 			
 			//interrupt on miss

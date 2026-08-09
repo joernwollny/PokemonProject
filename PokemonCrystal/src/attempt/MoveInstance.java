@@ -7,13 +7,14 @@ import effect.IEffect;
 import effect.NoEffect;
 import number.Exactly;
 
-public record Instance(
+public record MoveInstance(
 		ICondition<ActionContext> accuracy,
 		IEffect<ActionContext> before,
 		IEffect<ActionContext> onHit,
 		IEffect<ActionContext> onMiss,
 		IEffect<ActionContext> after) implements Attempt{
-	public Instance(Builder builder) {
+	
+	public MoveInstance(Builder builder) {
 		this(builder.accuracy, builder.before, builder.onHit, builder.onMiss, builder.after);
 	}
 
