@@ -21,20 +21,3 @@ public enum Target {
 		return resolver.apply(context);
 	}
 }
-
-/*
-public enum Target {
-	SELF(TargetContext::user),
-	ENEMY(TargetContext::enemy);
-	
-	private final Function<TargetContext, ActivePokemon> resolver;
-	
-	Target(Function<TargetContext, ActivePokemon> resolver) {
-		this.resolver = resolver;
-	}
-
-	public ActivePokemon getTarget(TargetContext context) {
-		return resolver.apply(context);
-	}
-}
-*/

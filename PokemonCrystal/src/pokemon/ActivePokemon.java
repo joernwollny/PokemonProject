@@ -3,6 +3,7 @@ package pokemon;
 import java.util.HashSet;
 import java.util.Set;
 
+import eventhandler.Prioritized;
 import stages.BattleStages;
 import stages.StageResult;
 import stages.StatChange;
@@ -11,7 +12,7 @@ import status.IStatusEffect;
 import status.StatusCondition;
 import status.StatusResult;
 
-public class ActivePokemon {
+public class ActivePokemon implements Prioritized<ActivePokemon>{
 	private final Pokemon pokemon;
 	private final BattleStages stages = new BattleStages();
 	private final Set<IStatusEffect> volatiles = new HashSet<>();
@@ -42,16 +43,6 @@ public class ActivePokemon {
 		return pokemon;
 	}
 
-	public double getSpeed() {
-		double speed = getEffectiveStat(Stat.SPEED);
-		
-		for (IStatusEffect status : getStatus()) {
-			speed *= status.speedModifier(null);
-		}
-		
-		return speed + Math.random();
-	}
-	
 	public Set<IStatusEffect> getStatus() {
 		Set<IStatusEffect> allStatus = new HashSet<>(volatiles);
 		pokemon.getPersistentStatus().ifPresent(s -> allStatus.add(s));
@@ -69,4 +60,16 @@ public class ActivePokemon {
 	public boolean removeStatus(IStatusEffect effect) {
 		return volatiles.remove(effect);
 	}
+
+	@Override
+	public int getPriority() {
+		double speed = getEffectiveStat(Stat.SPEED);
+			
+		for (IStatusEffect status : getStatus()) {
+			speed *= status.speedModifier(null);
+		}
+		
+		return (int) speed;
+	}
+		
 }

@@ -2,7 +2,11 @@ package battleaction;
 
 import trainer.Trainer;
 
-public class Flee implements IBattleAction {
+public class Flee extends BattleAction {
+	
+	protected Flee() {
+		super(3);
+	}
 
 	@Override
 	public void prepare(Trainer user, Trainer target) {

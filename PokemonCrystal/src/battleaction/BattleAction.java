@@ -1,26 +1,21 @@
 package battleaction;
 
-import java.util.function.Supplier;
+import battle.ActionContext;
+import eventhandler.Prioritized;
 
-import game.UserSelection;
-
-public enum BattleAction {
-	FIGHT(Fight::new),
-	SWITCH(Switch::new),
-	BAG(Bag::new),
-	FLEE(Flee::new);
+public abstract class BattleAction implements Prioritized<BattleAction>{
 	
-	private final Supplier<IBattleAction> factory;
+	private final int priority;
 	
-	BattleAction(Supplier<IBattleAction> factory) {
-		this.factory = factory;
+	protected BattleAction(int priority) {
+		this.priority = priority;
 	}
 	
-	public IBattleAction create() {
-		return factory.get();
-	}
+	public abstract void prepare(ActionContext context);
+	public abstract void execute();
 	
-	public static IBattleAction getAction() {
-		return BattleAction.values()[UserSelection.userInput(BattleAction.FLEE.ordinal())].create();
+	public int getPriority() {
+		return priority;
 	}
 }
+                                                                                                       

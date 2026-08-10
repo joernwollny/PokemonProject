@@ -3,9 +3,13 @@ package battleaction;
 import pokemon.Pokemon;
 import trainer.Trainer;
 
-public class Bag implements IBattleAction {
+public class Bag extends BattleAction {
 
-//	private Item item;
+	protected Bag() {
+		super(1);
+	}
+
+	//	private Item item;
 	private Pokemon target;
 
 	@Override

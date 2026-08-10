@@ -2,7 +2,11 @@ package battleaction;
 
 import trainer.Trainer;
 
-public class Switch implements IBattleAction {
+public class Switch extends BattleAction {
+
+	protected Switch() {
+		super(2);
+	}
 
 	private int indexToSwitchTo;
 	

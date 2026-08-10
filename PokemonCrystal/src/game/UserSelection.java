@@ -20,7 +20,7 @@ public class UserSelection {
 		return selection;
 	}
 	
-	public static int userInput(int upperBound) {
-		return userInput(0, upperBound);
+	public static int userInput(int amount) {
+		return userInput(0, amount-1);
 	}
 }

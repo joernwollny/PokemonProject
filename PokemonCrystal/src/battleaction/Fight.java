@@ -1,65 +1,65 @@
 package battleaction;
 
 import java.util.List;
-import java.util.Optional;
 
+import battle.ActionContext;
 import battle.TargetContext;
 import game.UserSelection;
 import move.Move;
+import move.MoveContext;
 import move.MoveSet;
-import move.Priority;
 import pokemon.ActivePokemon;
-import trainer.Trainer;
 
 //possibly npc fight 
-public class Fight implements IBattleAction {
+public class Fight extends BattleAction {
 
-	private Move move;
-	private List<ActivePokemon> targets;
-	private ActivePokemon user;
+	protected Fight() {
+		super(0);
+	}
+
+	private MoveContext context;
 
 	@Override
-	public void prepare(Trainer self, Trainer enemy) {
-		// Optional nullable impossible, since i check before ever round
-		this.user = self.team().getActivePokemon().get();
-		Move possibleMove;
-		List<ActivePokemon> possibleTargets;
-		MoveSet moves = self.team().getActivePokemon().get().getPokemon().getMoves();
-
+	public void prepare(ActionContext context) {
+		ActivePokemon user = context.user();
+		
+		MoveSet moves = user.getPokemon().getMoves();
+ 
 		if (!moves.anyUsable()) {
 //			move = struggle;
-			targets = List.of(enemy.team().getActivePokemon().get());
+//			targets = List.of(enemy.team().getActivePokemon().get());
 			return;
 		}
 		
+		Move possibleMove = null;
+		List<ActivePokemon> possibleTargets = null;
 		do {
 			// show moves
-			moves.show();
+//			moves.show();
+			
 			// select move
 			int index = UserSelection.userInput(moves.size());
 			possibleMove = moves.get(index);
-			// possibly select target
-			if (move.hasMultipleTarget()) {
-				possibleTargets = move.getTarget().resolve();
-			} else {
-				possibleTargets = move.getDefaultTarget().resolve(
-						new TargetContext(self.team().getActivePokemon().get(), enemy.team().getActivePokemon().get()));
-			}
+			possibleTargets = possibleMove.getDefaultTarget().resolve(
+					new TargetContext(
+							user, context.enemy().team().getActivePokemon().get()));
+			
+			// possibly select target. only relevant in 2v2
+//			if (move.hasMultipleTargetOptions()) {
+//				possibleTargets = move.getTarget().resolve();
+//			} else {
+//				possibleTargets = move.getDefaultTarget().resolve(
+//						new TargetContext(self.team().getActivePokemon().get(), enemy.team().getActivePokemon().get()));
+//			}
+			
 			// can select move? PP-check
 
 		} while (!possibleMove.isUseable());
 
-		move = possibleMove;
-		targets = possibleTargets;
-
-	}
-
-	// should only be called after prepare to get prios
-	public Priority getPriority() {
-		Optional<Move> move = Optional.ofNullable(this.move);
-
-		return (move.isPresent()) ? new Priority(move.get().superPriority(), user.getSpeed()) : null;
-
+		Move move = possibleMove;
+		List<ActivePokemon> targets = possibleTargets;
+		
+		this.context = new MoveContext(move, user, targets);
 	}
 
 	@Override

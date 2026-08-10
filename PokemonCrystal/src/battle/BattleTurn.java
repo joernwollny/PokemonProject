@@ -1,21 +1,29 @@
 package battle;
 
-import java.util.List;
-
 import battleaction.BattleAction;
-import battleaction.IBattleAction;
+import battleaction.BattleActionType;
+import eventhandler.EventHandler;
 import trainer.Trainer;
 
 public record BattleTurn(Trainer player, Trainer npc) {
 
 	public void execute() {
 //		BattleUI.showBattleMenue();
-		List<IBattleAction> actions;
+		EventHandler handler = new EventHandler();
 		
-		IBattleAction playerAction = BattleAction.getAction();
-		IBattleAction npcAction = BattleAction.FIGHT.create();
+		//2v2 to-add
+		//(what if can't act)
 		
+		BattleAction playerAction = BattleActionType.getAction();
+		playerAction.prepare(player, npc);
+		handler.add(playerAction);
 		
+		BattleAction npcAction = BattleActionType.FIGHT.create();
+		//AI move selector
+		npcAction.prepare(npc, player);
+		handler.add(npcAction);
+		
+		handler.execute();
 		
 	}
 }
