@@ -22,7 +22,7 @@ abstract class Stats {
 	public Stats(int max) {
 		this();
 		for (Stat stat : Stat.values()) {
-			stats.put(stat, (int) Math.random()*max);
+			stats.put(stat, (int) (Math.random()*(max)));
 		}
 	}
 

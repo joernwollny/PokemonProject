@@ -5,7 +5,7 @@ import java.util.EnumMap;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class IndividualValues extends Stats{
-	private static final int MAX_IV = 31;
+	private static final int IV_LIMIT = 32;
 	
 	@JsonCreator
 	public IndividualValues(EnumMap<Stat, Integer> stats) {
@@ -13,6 +13,6 @@ public class IndividualValues extends Stats{
 	}
 
 	public IndividualValues(){
-		super(MAX_IV);
+		super(IV_LIMIT);
 	}
 }

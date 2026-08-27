@@ -1,9 +1,6 @@
-/eventHandler/
-/battleaction/
-/move/
+/test/
 /pokemon/
-/game/
-/eventhandler/
-/battle/
-/effect/
+/condition/
+/stats/
 /status/
+/effect/

@@ -3,8 +3,7 @@ package condition;
 import battle.ActionContext;
 import number.INumber;
 
-//unsicher
-public record Probability(INumber number) implements ICondition<ActionContext>{
+public record Probability(INumber<ActionContext> number) implements ICondition<ActionContext>{
 
 	@Override
 	public boolean check(ActionContext context) {

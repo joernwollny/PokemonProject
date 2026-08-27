@@ -2,6 +2,9 @@ package game;
 
 import java.io.FileNotFoundException;
 
+import attempt.Attempt;
+import attempt.MoveInstance;
+import attempt.MoveInstance.Builder;
 import json.JsonLoader;
 import json.Pokedex;
 import move.Category;
@@ -41,6 +44,8 @@ public class Game {
 		MoveSet testset = test.generateMoveSet(5);
 		
 //		testset.printMoves();
+		
+		Attempt testtest = new MoveInstance(new Builder());
 		
 		
 		
