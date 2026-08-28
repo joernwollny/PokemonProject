@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.Map;
 
 import pokemon.Species;
+import tools.jackson.core.type.TypeReference;
 import tools.jackson.databind.ObjectMapper;
 
 public class JsonLoader {
@@ -12,19 +13,17 @@ public class JsonLoader {
 	public static Pokedex importPokedex() throws FileNotFoundException {
 		ObjectMapper mapper = new ObjectMapper();
 
-		Pokedex pokedex =
-				mapper.readValue(
-						new File("src/json/species.json"),
-						mapper.getTypeFactory().constructMapType(
-								Map.class, String.class, Species.class
-								)
-						);
+		Map<String, Species> map = mapper.readValue(new File("src/main/java/json/species.json"),
+				new TypeReference<Map<String, Species>>() {}
+		);
 
-//		for (Species species : pokedex.values()) {
-//			System.out.println(species.base().getPrimary());
-//		}
-		
-		return pokedex;
+		return new Pokedex(map);
 
+	}
+
+	public static void main(String[] args) throws FileNotFoundException {
+		for (Species species : importPokedex().pokedex().values()) {
+			System.out.println(species);
+		}
 	}
 }
