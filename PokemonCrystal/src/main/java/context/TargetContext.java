@@ -1,4 +1,4 @@
-package battle;
+package context;
 
 import move.Target;
 import pokemon.ActivePokemon;

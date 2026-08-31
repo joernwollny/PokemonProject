@@ -1,5 +1,6 @@
 package battleaction;
 
+import context.ActionContext;
 import trainer.Trainer;
 
 public class Flee extends BattleAction {
@@ -9,14 +10,14 @@ public class Flee extends BattleAction {
 	}
 
 	@Override
-	public void prepare(Trainer user, Trainer target) {
-		//can flee?
+	public void execute() {
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void execute() {
-		// TODO Auto-generated method stub
+	public void prepare(ActionContext context) {
+		//can flee?
 		
 	}
 

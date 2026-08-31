@@ -1,5 +1,6 @@
 package battleaction;
 
+import context.ActionContext;
 import trainer.Trainer;
 
 public class Switch extends BattleAction {
@@ -11,7 +12,7 @@ public class Switch extends BattleAction {
 	private int indexToSwitchTo;
 	
 	@Override
-	public void prepare(Trainer user, Trainer target) {
+	public void prepare(ActionContext context) {
 		//show team
 		//select pokemon
 		//can switch to that?

@@ -1,13 +1,26 @@
 package attempt;
 
-import battle.ActionContext;
 import condition.ICondition;
+import context.MoveContext;
 import effect.IEffect;
+import move.Target;
 import number.INumber;
 
-public record Combo(ICondition<ActionContext> accuracy, INumber<ActionContext> hits, IEffect<ActionContext> effect) implements Attempt{
+public class Combo extends Attempt{
+	
+	private ICondition<MoveContext> accuracy;
+	private INumber<MoveContext> hits;
+	private IEffect<MoveContext> effect;
+	
+	public Combo(ICondition<MoveContext> accuracy, INumber<MoveContext> hits, IEffect<MoveContext> effect, Target target) {
+		super(target);
+		this.accuracy = accuracy;
+		this.hits = hits;
+		this.effect = effect;
+	}
+	
 	@Override
-	public boolean execute(ActionContext battle) {
+	public boolean execute(MoveContext battle) {
 		if (accuracy.check(battle)) {
 			for (int i = 0; i < hits.evaluate(battle); i++) {
 				effect.apply(battle);

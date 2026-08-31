@@ -1,6 +1,6 @@
 package battleaction;
 
-import battle.ActionContext;
+import context.ActionContext;
 import eventhandler.Prioritized;
 
 public abstract class BattleAction implements Prioritized<BattleAction>{

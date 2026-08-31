@@ -1,13 +1,13 @@
 package status;
 
-import battle.ActionContext;
+import context.MoveContext;
 import effect.StatusDamage;
 import pokemon.ActivePokemon;
 
 public class Burn extends AbstractStatusEffect {
 
 	@Override
-	public double damageModifier(ActionContext action) {
+	public double damageModifier(MoveContext action) {
 		return action.move().isPhysical() ? .5 : 1.0;
 	}
 	@Override

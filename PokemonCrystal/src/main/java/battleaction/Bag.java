@@ -1,5 +1,6 @@
 package battleaction;
 
+import context.ActionContext;
 import pokemon.Pokemon;
 import trainer.Trainer;
 
@@ -13,17 +14,17 @@ public class Bag extends BattleAction {
 	private Pokemon target;
 
 	@Override
-	public void prepare(Trainer user, Trainer target) {
-		//show bag
-		//select item
-		//select target
-		//target valid?
+	public void execute() {
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void execute() {
-		// TODO Auto-generated method stub
+	public void prepare(ActionContext context) {
+		//show bag
+		//select item
+		//select target
+		//target valid?
 		
 	}
 }

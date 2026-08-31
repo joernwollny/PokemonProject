@@ -1,6 +1,7 @@
 package status;
 
-import battle.ActionContext;
+import context.ActionContext;
+import context.MoveContext;
 import pokemon.ActivePokemon;
 import pokemon.Pokemon;
 
@@ -10,7 +11,7 @@ public interface IStatusEffect {
 		return true;
 	}
 
-	default double damageModifier(ActionContext action) {
+	default double damageModifier(MoveContext action) {
 		return 1.;
 	}
 

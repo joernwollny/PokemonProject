@@ -22,9 +22,9 @@ public class ActivePokemon implements Prioritized<ActivePokemon> {
 		this.pokemon = pokemon;
 	}
 
-//	public int getStage(Stat stat) {
-//		return stages.get(stat);
-//	}
+	public int getStage(Stat stat) {
+		return stages.get(stat);
+	}
 
 	public StageResult addStage(StatChange change) {
 		return stages.add(change.stat(), change.delta());
@@ -42,6 +42,30 @@ public class ActivePokemon implements Prioritized<ActivePokemon> {
 		default -> {
 			double multiplier = getEffectiveMultiplier(stat);
 			return pokemon.getEffectiveStat(stat) * multiplier;
+		}
+		}
+	}
+	
+	public double getEffectiveStatIgnoreNegative(Stat stat) {
+		switch (stat) {
+		case CRIT, EVASION, ACCURACY -> {
+			throw new IllegalArgumentException("crit, evasion, accuracy have no stat");
+		}
+		default -> {
+			double multiplier = getEffectiveMultiplier(stat);
+			return pokemon.getEffectiveStat(stat) * Math.max(multiplier, 0);
+		}
+		}
+	}
+	
+	public double getEffectiveStatIgnorePositive(Stat stat) {
+		switch (stat) {
+		case CRIT, EVASION, ACCURACY -> {
+			throw new IllegalArgumentException("crit, evasion, accuracy have no stat");
+		}
+		default -> {
+			double multiplier = getEffectiveMultiplier(stat);
+			return pokemon.getEffectiveStat(stat) * Math.min(multiplier, 0);
 		}
 		}
 	}

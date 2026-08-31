@@ -3,29 +3,24 @@ package move;
 import java.util.EnumSet;
 
 import attempt.Attempt;
-import battle.ActionContext;
+import context.MoveContext;
 import pokemon.Type;
 
 public record Move(String name, Type type, Category category, PowerPoints pp, int priority, EnumSet<Flag> flags, Attempt attempt) {
 
-	public boolean isUseable() {
-		return pp.isAvailable();
-	}
-
-	public void execute(ActionContext battle) {
-		attempt.execute(battle);
-	}
-
-	public boolean isPhysical() {
-		return category.equals(Category.PHYSICAL);
+	public Move {
+		flags = EnumSet.copyOf(flags);
 	}
 	
-	//NEED TO IMPLEMENT
-	public boolean hasMultipleTarget() {
-		return true;
+	public void execute(MoveContext context) {
+		attempt.execute(context);
 	}
+
+	public boolean isUseable() {	return pp.isAvailable();	}
+	public boolean isPhysical() {	return category.equals(Category.PHYSICAL);	}
+	public boolean isSpecial() {	return category.equals(Category.SPECIAL);	}
 	
-	//NEED TO IMPLEMENT
+	@Deprecated //"Target has to be inside the attempt"
 	public Target getDefaultTarget() {
 		return Target.ENEMY;
 	}
@@ -33,5 +28,4 @@ public record Move(String name, Type type, Category category, PowerPoints pp, in
 	public boolean flagPresent(Flag flag) {
 		return flags.contains(flag);
 	}
-
 }

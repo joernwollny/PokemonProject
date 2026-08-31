@@ -1,11 +1,9 @@
 package number;
 
-import battle.Battle;
-
-public record Sum(INumber a, INumber b) implements INumber {
+public record Sum<T>(INumber<T> a, INumber<T> b) implements INumber<T> {
 	@Override
-	public double evaluate(Battle battle) {
-		return a.evaluate(battle)+b.evaluate(battle);
+	public double evaluate(T context) {
+		return a.evaluate(context)+b.evaluate(context);
 	}
 
 }

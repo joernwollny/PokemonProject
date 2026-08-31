@@ -1,6 +1,6 @@
 package effect;
 
-import battle.ActionContext;
+import context.ActionContext;
 
 public record NoEffect() implements IEffect<ActionContext> {
 

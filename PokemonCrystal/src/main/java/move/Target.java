@@ -3,7 +3,7 @@ package move;
 import java.util.List;
 import java.util.function.Function;
 
-import battle.TargetContext;
+import context.TargetContext;
 import pokemon.ActivePokemon;
 
 public enum Target {

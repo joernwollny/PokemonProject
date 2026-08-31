@@ -1,16 +1,26 @@
 package attempt;
 
-import battle.ActionContext;
+import context.MoveContext;
+import move.Target;
 
-public record Cascade(MoveInstance[] instances) implements Attempt{
-	@Override
-	public boolean execute(ActionContext battle) {
+/**
+ * interrupt on miss
+ */
+public class Cascade extends Attempt {
+	
+	private MoveInstance[] instances;
+	
+	public Cascade(MoveInstance[] instances, Target target) {
+		super(target);
+		this.instances = instances;
+	}
+	
+	public boolean execute(MoveContext battle) {
 		boolean hit;
 		
 		for (MoveInstance instance : instances) {
 			hit = instance.execute(battle);
 			
-			//interrupt on miss
 			if (hit == false) {
 				return false;
 			}

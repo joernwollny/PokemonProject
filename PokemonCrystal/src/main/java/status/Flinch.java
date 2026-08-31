@@ -1,6 +1,6 @@
 package status;
 
-import battle.ActionContext;
+import context.ActionContext;
 import pokemon.ActivePokemon;
 
 public class Flinch extends AbstractStatusEffect {

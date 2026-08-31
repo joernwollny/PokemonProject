@@ -1,6 +1,6 @@
 package status;
 
-import battle.ActionContext;
+import context.ActionContext;
 
 public class Freeze extends AbstractStatusEffect {
 

@@ -1,4 +1,4 @@
-package battle;
+package context;
 
 import pokemon.ActivePokemon;
 import trainer.Trainer;

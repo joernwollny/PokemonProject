@@ -2,11 +2,11 @@ package battleaction;
 
 import java.util.List;
 
-import battle.ActionContext;
-import battle.TargetContext;
+import context.ActionContext;
+import context.MoveContext;
+import context.TargetContext;
 import game.UserSelection;
 import move.Move;
-import move.MoveContext;
 import move.MoveSet;
 import pokemon.ActivePokemon;
 
@@ -40,7 +40,7 @@ public class Fight extends BattleAction {
 			// select move
 			int index = UserSelection.userInput(moves.size());
 			possibleMove = moves.get(index);
-			possibleTargets = possibleMove.getDefaultTarget().resolve(
+			possibleTargets = possibleMove.attempt().getTarget().resolve(
 					new TargetContext(
 							user, context.enemy().team().getActivePokemon().get()));
 			
@@ -64,8 +64,6 @@ public class Fight extends BattleAction {
 
 	@Override
 	public void execute() {
-		// TODO Auto-generated method stub
-
+		context.move().execute(context);
 	}
-
 }

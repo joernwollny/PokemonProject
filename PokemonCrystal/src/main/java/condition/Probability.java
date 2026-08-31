@@ -1,6 +1,6 @@
 package condition;
 
-import battle.ActionContext;
+import context.ActionContext;
 import number.INumber;
 
 public record Probability(INumber<ActionContext> number) implements ICondition<ActionContext>{

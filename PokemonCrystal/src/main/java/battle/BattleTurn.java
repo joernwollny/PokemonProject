@@ -2,18 +2,19 @@ package battle;
 
 import battleaction.BattleAction;
 import battleaction.BattleActionType;
+import context.ActionContext;
 import eventhandler.EventHandler;
 import trainer.Trainer;
 
 public record BattleTurn(Trainer player, Trainer npc) {
 
 	public void execute() {
-//		BattleUI.showBattleMenue();
+		
 		EventHandler handler = new EventHandler();
 		
-		//2v2 to-add
-		//(what if can't act)
+		// todo 2v2
 		
+//		BattleUI.showBattleMenue();
 		BattleAction playerAction = BattleActionType.getAction();
 		playerAction.prepare(new ActionContext(player.team().getActivePokemon().get(), player, npc));
 		handler.add(playerAction);

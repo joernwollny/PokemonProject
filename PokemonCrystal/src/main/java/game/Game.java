@@ -45,7 +45,7 @@ public class Game {
 		
 //		testset.printMoves();
 		
-		Attempt testtest = new MoveInstance(new Builder());
+
 		
 		
 		
